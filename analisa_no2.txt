@@ -1,0 +1,34 @@
+Analisa Hasil Filter Konvolusi pada Citra Digital
+
+1. Nilai Rata-rata Piksel
+   Asli : 123.47
+   LPF  : 122.91
+   HPF  : 128.02
+   BPF  : 125.68
+
+2. Analisis Visual
+   - **LPF (Low Pass Filter)**:
+     Gambar tampak lebih halus dan sedikit blur.
+     Detail tepi berkurang, noise kecil ikut hilang.
+     Hal ini disebabkan LPF menahan frekuensi rendah (area halus) dan meredam frekuensi tinggi (tepi/noise).
+
+   - **HPF (High Pass Filter)**:
+     Gambar tampak lebih tajam di bagian tepi, namun bagian halus menjadi gelap.
+     HPF melewatkan komponen frekuensi tinggi (tepi) dan menekan frekuensi rendah (area rata).
+
+   - **BPF (Band Pass Filter)**:
+     Gambar terlihat lebih tajam dari aslinya tetapi tidak sekeras HPF.
+     Filter ini menahan sebagian frekuensi tinggi dan rendah secara seimbang sehingga menghasilkan efek penajaman.
+
+3. Hubungan Domain Spasial dan Frekuensi
+   - Proses konvolusi dilakukan di **domain spasial**, yaitu dengan menggeser kernel di seluruh piksel citra.
+   - Setiap kernel memiliki efek tertentu di **domain frekuensi**:
+     • LPF = menurunkan komponen frekuensi tinggi → hasil blur.  
+     • HPF = menurunkan komponen frekuensi rendah → hasil deteksi tepi.  
+     • BPF = menahan sebagian keduanya → hasil penajaman.  
+   - Dengan kata lain, manipulasi kernel di spasial setara dengan manipulasi spektrum frekuensi di domain Fourier.
+
+4. Kesimpulan
+   - LPF efektif untuk reduksi noise.
+   - HPF berguna untuk ekstraksi fitur tepi.
+   - BPF berguna untuk penajaman gambar tanpa kehilangan banyak detail.
